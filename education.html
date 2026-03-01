@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive educational guide to portfolio theory and asset pricing models using real Swedish market data.">
+    <title>Learn Portfolio Theory | Interactive Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="education.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <h1>📚 Learn Portfolio Theory</h1>
+            <p class="subtitle">An Interactive Journey Through Modern Asset Pricing</p>
+            <nav class="breadcrumb">
+                <a href="index.html">← Back to Overview</a> | 
+                <a href="analysis.html">View Full Analysis</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Navigation Menu -->
+        <nav class="learning-nav">
+            <h3>Learning Modules</h3>
+            <ul>
+                <li><a href="#module1" class="nav-link">Module 1: The Basics</a></li>
+                <li><a href="#module2" class="nav-link">Module 2: Risk & Return</a></li>
+                <li><a href="#module3" class="nav-link">Module 3: Diversification</a></li>
+                <li><a href="#module4" class="nav-link">Module 4: CAPM</a></li>
+                <li><a href="#module5" class="nav-link">Module 5: Fama-French</a></li>
+                <li><a href="#module6" class="nav-link">Module 6: Active Management</a></li>
+            </ul>
+        </nav>
+
+        <!-- Module 1: The Basics -->
+        <section id="module1" class="module">
+            <h2>📖 Module 1: The Basics</h2>
+            
+            <div class="concept-card">
+                <h3>What is Portfolio Theory?</h3>
+                <p>
+                    Portfolio theory is the science of making smart investment decisions. It helps us answer 
+                    fundamental questions like:
+                </p>
+                <ul>
+                    <li>How much return should I expect from an investment?</li>
+                    <li>How much risk am I taking?</li>
+                    <li>How can I reduce risk without sacrificing returns?</li>
+                    <li>Are my investments performing well compared to the market?</li>
+                </ul>
+            </div>
+
+            <div class="interactive-box">
+                <h4>🎯 Key Concepts</h4>
+                <div class="concept-grid">
+                    <div class="concept-item" onclick="toggleExplanation('return')">
+                        <h5>Return 📈</h5>
+                        <p class="concept-preview">How much money you make (or lose)</p>
+                        <div id="return-explanation" class="explanation" style="display:none;">
+                            <p><strong>Formula:</strong> Return = (End Value - Start Value) / Start Value</p>
+                            <p><strong>Example:</strong> Buy stock at $100, sell at $110 → Return = 10%</p>
+                            <p><strong>In our data:</strong> Average market return = 8.41% per year</p>
+                        </div>
+                    </div>
+                    <div class="concept-item" onclick="toggleExplanation('risk')">
+                        <h5>Risk 📉</h5>
+                        <p class="concept-preview">How much returns fluctuate</p>
+                        <div id="risk-explanation" class="explanation" style="display:none;">
+                            <p><strong>Measured by:</strong> Standard deviation (volatility)</p>
+                            <p><strong>Example:</strong> If returns vary ±20%, that's your risk level</p>
+                            <p><strong>In our data:</strong> Market volatility = ~62% per year</p>
+                        </div>
+                    </div>
+                    <div class="concept-item" onclick="toggleExplanation('diversification')">
+                        <h5>Diversification 🎲</h5>
+                        <p class="concept-preview">Don't put all eggs in one basket</p>
+                        <div id="diversification-explanation" class="explanation" style="display:none;">
+                            <p><strong>Principle:</strong> Combining investments reduces risk</p>
+                            <p><strong>Why it works:</strong> When one goes down, another might go up</p>
+                            <p><strong>In our data:</strong> Funds have 40-60% lower risk than individual stocks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="data-example">
+                <h4>📊 Real Data Example: Swedish Stocks 2003-2025</h4>
+                <p>We analyzed <strong>71 Swedish stocks</strong> and <strong>10 investment funds</strong> over 23 years. Here's what we found:</p>
+                <canvas id="basicReturnsChart" width="400" height="200"></canvas>
+            </div>
+
+            <div class="quiz-box">
+                <h4>✅ Check Your Understanding</h4>
+                <div class="quiz-question">
+                    <p><strong>Q:</strong> If a stock returns 5%, 15%, -5%, and 5% in four years, what's the average return?</p>
+                    <button onclick="showAnswer('q1', '(5+15-5+5)/4 = 5% per year')">Show Answer</button>
+                    <p id="q1" class="answer"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 2: Risk & Return Tradeoff -->
+        <section id="module2" class="module">
+            <h2>⚖️ Module 2: Risk & Return Tradeoff</h2>
+            
+            <div class="concept-card">
+                <h3>The Fundamental Rule</h3>
+                <p class="highlight-text">
+                    Higher returns come with higher risk. There's no free lunch in finance!
+                </p>
+                <p>
+                    This is why treasury bonds (safe) pay ~2%, while stocks (risky) average ~8-10%. 
+                    The extra return is compensation for bearing risk.
+                </p>
+            </div>
+
+            <div class="interactive-box">
+                <h4>🎮 Interactive: Risk-Return Calculator</h4>
+                <div class="calculator">
+                    <label>Expected Market Return: <input type="number" id="marketReturn" value="8.41" step="0.1">%</label>
+                    <label>Risk-Free Rate: <input type="number" id="riskFree" value="1.61" step="0.1">%</label>
+                    <button onclick="calculateRiskPremium()">Calculate Risk Premium</button>
+                    <div id="riskPremiumResult" class="result-box"></div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Sharpe Ratio: Measuring Efficiency</h3>
+                <p>
+                    The Sharpe ratio tells us how much return we get per unit of risk. 
+                    It's like measuring "bang for your buck" in investing.
+                </p>
+                <div class="formula-box">
+                    <p><strong>Sharpe Ratio = (Return - Risk-Free Rate) / Risk</strong></p>
+                    <p>Higher is better! A Sharpe ratio above 0.5 is considered good.</p>
+                </div>
+            </div>
+
+            <div class="data-example">
+                <h4>📊 Real Data: Stocks vs Funds</h4>
+                <canvas id="sharpeComparisonChart" width="400" height="200"></canvas>
+                <p class="data-insight">
+                    💡 <strong>Insight:</strong> Investment funds achieve similar returns to individual stocks 
+                    but with much less risk, resulting in higher Sharpe ratios!
+                </p>
+            </div>
+
+            <div class="quiz-box">
+                <h4>✅ Check Your Understanding</h4>
+                <div class="quiz-question">
+                    <p><strong>Q:</strong> Investment A: 12% return, 20% risk. Investment B: 10% return, 10% risk. Risk-free rate = 2%. Which has better Sharpe ratio?</p>
+                    <button onclick="showAnswer('q2', 'A: (12-2)/20 = 0.50, B: (10-2)/10 = 0.80. Investment B is more efficient!')">Show Answer</button>
+                    <p id="q2" class="answer"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 3: Diversification Magic -->
+        <section id="module3" class="module">
+            <h2>✨ Module 3: The Magic of Diversification</h2>
+            
+            <div class="concept-card">
+                <h3>Two Types of Risk</h3>
+                <div class="risk-types">
+                    <div class="risk-card">
+                        <h4>Systematic Risk 🌍</h4>
+                        <p><strong>Also called:</strong> Market risk</p>
+                        <p><strong>What it is:</strong> Risk that affects the entire market (recession, interest rates, wars)</p>
+                        <p><strong>Can you avoid it?</strong> ❌ No - you get paid for this!</p>
+                    </div>
+                    <div class="risk-card">
+                        <h4>Unsystematic Risk 🏢</h4>
+                        <p><strong>Also called:</strong> Idiosyncratic risk, firm-specific risk</p>
+                        <p><strong>What it is:</strong> Risk specific to one company (CEO quits, product fails)</p>
+                        <p><strong>Can you avoid it?</strong> ✅ Yes - through diversification!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interactive-box">
+                <h4>🎮 Interactive: Build Your Portfolio</h4>
+                <p>See how adding more stocks reduces risk:</p>
+                <div class="portfolio-builder">
+                    <label>Number of stocks: <span id="stockCount">1</span></label>
+                    <input type="range" id="stockSlider" min="1" max="50" value="1" oninput="updateDiversification()">
+                    <canvas id="diversificationChart" width="400" height="200"></canvas>
+                    <p id="diversificationInsight" class="data-insight"></p>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>The Capital Market Line (CML)</h3>
+                <p>
+                    The CML shows the best possible risk-return combinations. Efficient portfolios lie on this line.
+                </p>
+                <div class="formula-box">
+                    <p><strong>CML Formula: E(Rp) = Rf + Sharpe × σp</strong></p>
+                    <p>Where: E(Rp) = expected portfolio return, Rf = risk-free rate, σp = portfolio risk</p>
+                </div>
+                <canvas id="cmlChart" width="400" height="250"></canvas>
+                <p class="data-insight">
+                    💡 <strong>Insight:</strong> Individual stocks scatter below the CML (inefficient). 
+                    Diversified funds cluster near the CML (efficient)!
+                </p>
+            </div>
+        </section>
+
+        <!-- Module 4: CAPM -->
+        <section id="module4" class="module">
+            <h2>📐 Module 4: The Capital Asset Pricing Model (CAPM)</h2>
+            
+            <div class="concept-card">
+                <h3>What is CAPM?</h3>
+                <p>
+                    CAPM is the foundation of modern finance. It tells us how much return we should expect 
+                    from any investment based on its systematic risk.
+                </p>
+                <div class="formula-box big-formula">
+                    <p><strong>E(Ri) = Rf + βi × [E(Rm) - Rf]</strong></p>
+                    <div class="formula-breakdown">
+                        <p><strong>E(Ri)</strong> = Expected return on asset i</p>
+                        <p><strong>Rf</strong> = Risk-free rate (1.61% in our data)</p>
+                        <p><strong>βi</strong> = Beta (measures systematic risk)</p>
+                        <p><strong>E(Rm) - Rf</strong> = Market risk premium (8.41% in our data)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Understanding Beta (β)</h3>
+                <div class="beta-explanation">
+                    <div class="beta-case">
+                        <h4>β = 1.0</h4>
+                        <p>Moves exactly with the market. If market goes up 10%, stock goes up 10%.</p>
+                    </div>
+                    <div class="beta-case">
+                        <h4>β > 1.0</h4>
+                        <p>More volatile than market. If β=1.5 and market goes up 10%, stock goes up 15%.</p>
+                    </div>
+                    <div class="beta-case">
+                        <h4>β < 1.0</h4>
+                        <p>Less volatile than market. If β=0.5 and market goes up 10%, stock goes up 5%.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interactive-box">
+                <h4>🎮 CAPM Calculator</h4>
+                <div class="calculator">
+                    <label>Risk-Free Rate (Rf): <input type="number" id="capm-rf" value="1.61" step="0.1">%</label>
+                    <label>Market Return (Rm): <input type="number" id="capm-rm" value="10.02" step="0.1">%</label>
+                    <label>Stock Beta (β): <input type="number" id="capm-beta" value="1.0" step="0.1"></label>
+                    <button onclick="calculateCAPM()">Calculate Expected Return</button>
+                    <div id="capmResult" class="result-box"></div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Alpha: Outperformance</h3>
+                <p>
+                    <strong>Alpha (α)</strong> measures how much better (or worse) an investment performs compared to CAPM's prediction.
+                </p>
+                <ul>
+                    <li><strong>α > 0:</strong> Outperforming! Earning more than expected for the risk taken.</li>
+                    <li><strong>α = 0:</strong> Fair return. Earning exactly what CAPM predicts.</li>
+                    <li><strong>α < 0:</strong> Underperforming. Earning less than expected.</li>
+                </ul>
+                <p class="highlight-text">
+                    In efficient markets, alpha should be zero. Persistent positive alpha is rare and valuable!
+                </p>
+            </div>
+
+            <div class="data-example">
+                <h4>📊 Real Data: Size Effect</h4>
+                <p>We sorted stocks by size and found something interesting:</p>
+                <canvas id="alphaBySize" width="400" height="200"></canvas>
+                <p class="data-insight">
+                    💡 <strong>Insight:</strong> Small stocks have positive alpha! CAPM under-predicts their returns. 
+                    This suggests size is a risk factor CAPM misses.
+                </p>
+            </div>
+        </section>
+
+        <!-- Module 5: Fama-French -->
+        <section id="module5" class="module">
+            <h2>🔬 Module 5: Fama-French Three-Factor Model</h2>
+            
+            <div class="concept-card">
+                <h3>Beyond CAPM</h3>
+                <p>
+                    Professors Eugene Fama and Kenneth French discovered CAPM isn't enough. Two additional 
+                    factors explain stock returns:
+                </p>
+                <div class="formula-box big-formula">
+                    <p><strong>E(Ri) = Rf + βi(Rm-Rf) + si(SMB) + hi(HML)</strong></p>
+                </div>
+            </div>
+
+            <div class="factor-grid">
+                <div class="factor-card">
+                    <h4>📊 Market Factor (Rm - Rf)</h4>
+                    <p><strong>What:</strong> Overall market risk premium</p>
+                    <p><strong>In our data:</strong> 8.41% per year</p>
+                    <p><strong>Interpretation:</strong> Compensation for bearing market risk</p>
+                </div>
+                <div class="factor-card">
+                    <h4>📏 Size Factor (SMB)</h4>
+                    <p><strong>What:</strong> Small Minus Big</p>
+                    <p><strong>In our data:</strong> 0.87% per year</p>
+                    <p><strong>Interpretation:</strong> Small stocks outperform large stocks</p>
+                </div>
+                <div class="factor-card">
+                    <h4>📚 Value Factor (HML)</h4>
+                    <p><strong>What:</strong> High Minus Low (book-to-market)</p>
+                    <p><strong>In our data:</strong> 2.18% per year</p>
+                    <p><strong>Interpretation:</strong> Value stocks outperform growth stocks</p>
+                </div>
+            </div>
+
+            <div class="data-example">
+                <h4>📊 Factor Performance Over Time</h4>
+                <canvas id="factorReturnsChart" width="400" height="200"></canvas>
+            </div>
+
+            <div class="interactive-box">
+                <h4>🎮 Compare CAPM vs Fama-French</h4>
+                <div class="calculator">
+                    <h5>Stock Characteristics:</h5>
+                    <label>Beta (β): <input type="number" id="ff-beta" value="1.0" step="0.1"></label>
+                    <label>Size loading (s): <input type="number" id="ff-size" value="0.5" step="0.1"></label>
+                    <label>Value loading (h): <input type="number" id="ff-value" value="0.3" step="0.1"></label>
+                    <button onclick="compareModels()">Compare Predictions</button>
+                    <div id="modelComparison" class="result-box"></div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Why Does This Matter?</h3>
+                <ul>
+                    <li><strong>Better predictions:</strong> FF3 explains 5-15% more return variation than CAPM</li>
+                    <li><strong>Portfolio construction:</strong> Can tilt toward small-cap or value stocks for higher expected returns</li>
+                    <li><strong>Performance evaluation:</strong> More accurate benchmark for judging fund managers</li>
+                    <li><strong>Risk management:</strong> Better understanding of what drives your portfolio</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Module 6: Active Management -->
+        <section id="module6" class="module">
+            <h2>🎯 Module 6: Active Management & Treynor-Black</h2>
+            
+            <div class="concept-card">
+                <h3>The Active vs Passive Debate</h3>
+                <div class="debate-grid">
+                    <div class="debate-card">
+                        <h4>Passive Investing 📊</h4>
+                        <p><strong>Strategy:</strong> Buy and hold market index</p>
+                        <p><strong>Pros:</strong> Low cost, simple, hard to beat</p>
+                        <p><strong>Cons:</strong> Can't outperform market</p>
+                        <p><strong>Fees:</strong> 0.2-0.5% per year</p>
+                    </div>
+                    <div class="debate-card">
+                        <h4>Active Investing 🎯</h4>
+                        <p><strong>Strategy:</strong> Pick stocks to beat market</p>
+                        <p><strong>Pros:</strong> Potential for outperformance</p>
+                        <p><strong>Cons:</strong> High cost, hard to succeed</p>
+                        <p><strong>Fees:</strong> 1.0-2.5% per year</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="data-example">
+                <h4>📊 The Fee Paradox: Real Data</h4>
+                <canvas id="feeImpactChart" width="400" height="200"></canvas>
+                <p class="data-insight">
+                    💡 <strong>Key Finding:</strong> Some managers have positive gross alpha (skill exists!), 
+                    but fees often eliminate net alpha for investors. Cost matters more than most think!
+                </p>
+            </div>
+
+            <div class="concept-card">
+                <h3>Treynor-Black: The Best of Both Worlds</h3>
+                <p>
+                    Instead of choosing all-or-nothing, Treynor-Black shows how to optimally mix active 
+                    and passive investing.
+                </p>
+                <div class="formula-box">
+                    <p><strong>Portfolio = (Small Active Tilt) + (Large Passive Base)</strong></p>
+                    <p>Typical allocation: 20-30% active, 70-80% market index</p>
+                </div>
+            </div>
+
+            <div class="interactive-box">
+                <h4>🎮 Portfolio Optimizer</h4>
+                <div class="calculator">
+                    <h5>Active Portfolio:</h5>
+                    <label>Alpha: <input type="number" id="tb-alpha" value="2.0" step="0.1">%</label>
+                    <label>Residual Risk: <input type="number" id="tb-risk" value="15" step="1">%</label>
+                    <h5>Market Parameters:</h5>
+                    <label>Market Return: <input type="number" id="tb-mkt-return" value="10" step="0.1">%</label>
+                    <label>Market Risk: <input type="number" id="tb-mkt-risk" value="20" step="1">%</label>
+                    <label>Risk-Free Rate: <input type="number" id="tb-rf" value="2" step="0.1">%</label>
+                    <button onclick="calculateTreyorBlack()">Calculate Optimal Mix</button>
+                    <div id="tbResult" class="result-box"></div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Practical Takeaways</h3>
+                <ul>
+                    <li>✅ <strong>Cost matters most:</strong> A 1% fee costs ~25% of returns over 30 years!</li>
+                    <li>✅ <strong>Diversify systematically:</strong> Reduce idiosyncratic risk for free</li>
+                    <li>✅ <strong>Use factors wisely:</strong> Small-cap and value tilts have paid off historically</li>
+                    <li>✅ <strong>Be skeptical of alpha claims:</strong> True skill is rare and hard to identify</li>
+                    <li>✅ <strong>Start passive, tilt active carefully:</strong> Most wealth stays in market index</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Summary & Next Steps -->
+        <section class="summary-section">
+            <h2>🎓 Congratulations!</h2>
+            <div class="concept-card">
+                <h3>What You've Learned</h3>
+                <div class="achievement-grid">
+                    <div class="achievement">✅ Risk-return tradeoff fundamentals</div>
+                    <div class="achievement">✅ Power of diversification</div>
+                    <div class="achievement">✅ CAPM and systematic risk</div>
+                    <div class="achievement">✅ Multi-factor models (Fama-French)</div>
+                    <div class="achievement">✅ Active vs passive debate</div>
+                    <div class="achievement">✅ Real-world Swedish market insights</div>
+                </div>
+                
+                <h3 style="margin-top: 2rem;">Next Steps</h3>
+                <div class="next-steps">
+                    <a href="analysis.html" class="btn btn-primary">📖 Read Full Research Analysis</a>
+                    <a href="https://colab.research.google.com/" target="_blank" class="btn btn-secondary">🚀 Explore Interactive Notebooks</a>
+                    <a href="index.html" class="btn btn-secondary">📊 View Project Overview</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Interactive Educational Guide | Built with HTML, CSS, JavaScript & Chart.js</p>
+            <p class="footnote">Based on 23 years of Swedish equity market data (2003-2025)</p>
+        </div>
+    </footer>
+
+    <script src="education.js"></script>
+</body>
+</html>

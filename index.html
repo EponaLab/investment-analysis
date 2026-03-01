@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive empirical asset pricing analysis of Swedish equity markets using CAPM, Fama-French, and portfolio optimization models.">
+    <title>Empirical Asset Pricing Analysis | Swedish Equity Markets</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <h1>Empirical Asset Pricing Analysis</h1>
+            <p class="subtitle">A Comprehensive Study of Swedish Equity Markets</p>
+            <div class="meta">
+                <span>📊 6 Research Questions</span>
+                <span>📈 275 Months of Data</span>
+                <span>💼 71 Stocks + 10 Funds</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="overview">
+            <h2>Project Overview</h2>
+            <p>
+                This project provides a comprehensive empirical analysis of asset pricing models and portfolio theory 
+                using Swedish equity market data from 2003 to 2025. Through six interconnected research questions, 
+                we explore fundamental concepts in modern portfolio theory, including factor models, portfolio efficiency, 
+                market anomalies, and active management strategies.
+            </p>
+            <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="education.html" class="btn btn-secondary" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                    📚 Learn the Theory (Interactive)
+                </a>
+                <a href="analysis.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                    📖 Read Full Analysis
+                </a>
+            </div>
+        </section>
+
+        <section class="datasets">
+            <h2>Datasets</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Stocks_2026.xlsx</h3>
+                    <p>Monthly returns for 71 Swedish stocks (2003-2025)</p>
+                </div>
+                <div class="card">
+                    <h3>Funds_2026.xlsx</h3>
+                    <p>Net and gross returns for 10 Swedish investment funds</p>
+                </div>
+                <div class="card">
+                    <h3>Factors_2026.xlsx</h3>
+                    <p>Fama-French factors: RF, MKT-RF, SMB, HML</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="notebooks">
+            <h2>Research Questions & Notebooks</h2>
+            <p class="section-intro">
+                Each notebook is self-contained with complete methodology, analysis, visualizations, and interpretations. 
+                All notebooks are ready to run in Google Colab.
+            </p>
+            
+            <div class="notebook-list">
+                <!-- Q1 -->
+                <div class="notebook">
+                    <div class="notebook-header">
+                        <span class="notebook-number">Q1</span>
+                        <h3>Fama-French Factor Analysis</h3>
+                    </div>
+                    <p class="description">
+                        Comprehensive analysis of risk factors using the Fama-French three-factor model. Examines market risk premium, 
+                        size factor (SMB), and value factor (HML) over 2003-2025.
+                    </p>
+                    <div class="highlights">
+                        <h4>Key Features</h4>
+                        <ul>
+                            <li>Annualized factor returns analysis</li>
+                            <li>Variance-covariance matrix computation</li>
+                            <li>Correlation analysis and time series visualization</li>
+                            <li>Distribution analysis with recession shading</li>
+                        </ul>
+                    </div>
+                    <div class="actions">
+                        <a href="https://colab.research.google.com/" target="_blank" class="btn btn-primary">🚀 Open in Colab</a>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="notebook">
+                    <div class="notebook-header">
+                        <span class="notebook-number">Q2</span>
+                        <h3>Capital Market Line Analysis</h3>
+                    </div>
+                    <p class="description">
+                        Risk-return analysis comparing individual stocks with diversified funds. Constructs the Capital Market Line 
+                        and evaluates portfolio efficiency.
+                    </p>
+                    <div class="highlights">
+                        <h4>Key Features</h4>
+                        <ul>
+                            <li>CML construction using market parameters</li>
+                            <li>Stocks vs funds performance comparison</li>
+                            <li>Sharpe ratio analysis</li>
+                            <li>Statistical tests on diversification benefits</li>
+                        </ul>
+                    </div>
+                    <div class="actions">
+                        <a href="https://drive.google.com/file/d/1S6TID1NQPtVcyTiIB6W157ckzLIDrsql/view" target="_blank" class="btn btn-secondary">📊 View on Drive</a>
+                        <a href="https://colab.research.google.com/drive/1S6TID1NQPtVcyTiIB6W157ckzLIDrsql" target="_blank" class="btn btn-primary">🚀 Open in Colab</a>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="notebook">
+                    <div class="notebook-header">
+                        <span class="notebook-number">Q3</span>
+                        <h3>CAPM vs Fama-French 3-Factor</h3>
+                    </div>
+                    <p class="description">
+                        Comparative analysis of asset pricing models. Tests whether the three-factor model provides better predictions 
+                        than traditional CAPM.
+                    </p>
+                    <div class="highlights">
+                        <h4>Key Features</h4>
+                        <ul>
+                            <li>Beta estimation via OLS regression</li>
+                            <li>Size-based stock classification</li>
+                            <li>Model prediction comparison</li>
+                            <li>Statistical significance testing</li>
+                        </ul>
+                    </div>
+                    <div class="actions">
+                        <a href="https://drive.google.com/file/d/1X0LM-1sLiXlblLx7jpK4GRaNxVb2sMc3/view" target="_blank" class="btn btn-secondary">📊 View on Drive</a>
+                        <a href="https://colab.research.google.com/drive/1X0LM-1sLiXlblLx7jpK4GRaNxVb2sMc3" target="_blank" class="btn btn-primary">🚀 Open in Colab</a>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="notebook">
+                    <div class="notebook-header">
+                        <span class="notebook-number">Q4</span>
+                        <h3>Size Effect and CAPM Alpha</h3>
+                    </div>
+                    <p class="description">
+                        Investigation of the size premium through portfolio sorting. Tests whether small-cap stocks exhibit abnormal 
+                        returns not explained by CAPM.
+                    </p>
+                    <div class="highlights">
+                        <h4>Key Features</h4>
+                        <ul>
+                            <li>Annual portfolio construction (2016-2025)</li>
+                            <li>5 size-sorted equally weighted portfolios</li>
+                            <li>CAPM alpha estimation with significance tests</li>
+                            <li>Monotonic pattern analysis</li>
+                        </ul>
+                    </div>
+                    <div class="actions">
+                        <a href="https://drive.google.com/file/d/1Z8EbjSt8gKfsbI5r963nDXDYhO8NKxgq/view" target="_blank" class="btn btn-secondary">📊 View on Drive</a>
+                        <a href="https://colab.research.google.com/drive/1Z8EbjSt8gKfsbI5r963nDXDYhO8NKxgq" target="_blank" class="btn btn-primary">🚀 Open in Colab</a>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="notebook">
+                    <div class="notebook-header">
+                        <span class="notebook-number">Q5</span>
+                        <h3>Fund Performance Evaluation</h3>
+                    </div>
+                    <p class="description">
+                        Comprehensive evaluation of Swedish investment funds. Compares net (after-fee) and gross (before-fee) alphas 
+                        to assess manager skill vs investor value.
+                    </p>
+                    <div class="highlights">
+                        <h4>Key Features</h4>
+                        <ul>
+                            <li>Net vs Gross alpha comparison</li>
+                            <li>Implied fee calculation and impact analysis</li>
+                            <li>Active vs Index fund differentiation</li>
+                            <li>Fee paradox investigation</li>
+                        </ul>
+                    </div>
+                    <div class="actions">
+                        <a href="https://drive.google.com/file/d/1ES_Vjx1BVq_Pga7kNadnHjSRb8dw25du/view" target="_blank" class="btn btn-secondary">📊 View on Drive</a>
+                        <a href="https://colab.research.google.com/drive/1ES_Vjx1BVq_Pga7kNadnHjSRb8dw25du" target="_blank" class="btn btn-primary">🚀 Open in Colab</a>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="notebook">
+                    <div class="notebook-header">
+                        <span class="notebook-number">Q6</span>
+                        <h3>Treynor-Black Active Portfolio</h3>
+                    </div>
+                    <p class="description">
+                        Construction of optimal active portfolio using the Treynor-Black model. Combines market timing with security 
+                        selection for potentially mispriced stocks.
+                    </p>
+                    <div class="highlights">
+                        <h4>Key Features</h4>
+                        <ul>
+                            <li>Information ratio-based weighting</li>
+                            <li>Long/short position determination</li>
+                            <li>Optimal allocation calculation</li>
+                            <li>Active vs passive portfolio mixing</li>
+                        </ul>
+                    </div>
+                    <div class="actions">
+                        <a href="https://drive.google.com/file/d/1wc7EtFew44BXrU9kPhLiD2QE-5X0UBlV/view" target="_blank" class="btn btn-secondary">📊 View on Drive</a>
+                        <a href="https://colab.research.google.com/drive/1wc7EtFew44BXrU9kPhLiD2QE-5X0UBlV" target="_blank" class="btn btn-primary">🚀 Open in Colab</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="methodology">
+            <h2>Methodology</h2>
+            <div class="grid-4">
+                <div class="card centered">
+                    <h3>📈 Statistical Analysis</h3>
+                    <p>OLS regression, t-tests, correlation analysis, variance-covariance matrices</p>
+                </div>
+                <div class="card centered">
+                    <h3>📊 Models</h3>
+                    <p>CAPM, Fama-French 3-Factor, Treynor-Black, Capital Market Line</p>
+                </div>
+                <div class="card centered">
+                    <h3>🎯 Portfolio Theory</h3>
+                    <p>Sharpe ratios, information ratios, alpha estimation, portfolio optimization</p>
+                </div>
+                <div class="card centered">
+                    <h3>📉 Visualization</h3>
+                    <p>Time series plots, scatter diagrams, correlation heatmaps, box plots</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="findings">
+            <h2>Key Findings</h2>
+            <div class="findings-list">
+                <div class="finding">
+                    <span class="icon">💡</span>
+                    <div>
+                        <h4>Factor Risk Premiums</h4>
+                        <p>Market risk premium of 8.41% annually, with significant size (SMB: 0.87%) and value (HML: 2.18%) premiums over the 23-year period.</p>
+                    </div>
+                </div>
+                <div class="finding">
+                    <span class="icon">🎯</span>
+                    <div>
+                        <h4>Diversification Benefits</h4>
+                        <p>Investment funds cluster near the CML with significantly lower risk than individual stocks, demonstrating clear diversification benefits.</p>
+                    </div>
+                </div>
+                <div class="finding">
+                    <span class="icon">📊</span>
+                    <div>
+                        <h4>Model Performance</h4>
+                        <p>Fama-French 3-Factor model provides better explanatory power than CAPM, especially for stocks with size or value tilts.</p>
+                    </div>
+                </div>
+                <div class="finding">
+                    <span class="icon">🔍</span>
+                    <div>
+                        <h4>Size Effect</h4>
+                        <p>Post-2015 analysis reveals size-sorted portfolios exhibit significant alphas, suggesting CAPM doesn't fully capture the size premium.</p>
+                    </div>
+                </div>
+                <div class="finding">
+                    <span class="icon">💰</span>
+                    <div>
+                        <h4>Fee Impact</h4>
+                        <p>While some funds show positive gross alphas (manager skill), fees often eliminate net alphas for investors—validating the efficient market hypothesis.</p>
+                    </div>
+                </div>
+                <div class="finding">
+                    <span class="icon">⚖️</span>
+                    <div>
+                        <h4>Active Management</h4>
+                        <p>Treynor-Black framework demonstrates how to optimally combine mispriced securities with passive market exposure for Sharpe ratio maximization.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Built with HTML + CSS | Deployed via OpenClaw</p>
+            <p class="footnote">All analysis conducted using Python, pandas, statsmodels, and matplotlib in Jupyter notebooks</p>
+        </div>
+    </footer>
+</body>
+</html>
